@@ -1,6 +1,17 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localfont from 'next/font/local'
 import "./globals.css";
+
+const jaro = localfont({
+    src:'../../public/fonts/Jaro.ttf',
+    variable: '--font-jaro'
+})
+
+const mont = localfont({
+    src:'../../public/fonts/Montserrat.ttf',
+    variable: '--font-mont'
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${jaro.variable} ${mont.variable} antialiased`}
       >
         {children}
       </body>
