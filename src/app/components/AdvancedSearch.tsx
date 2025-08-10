@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const AdvancedSearch = () => {
-  return (
-    <div>
+  return <div>{/* TODO */}</div>;
+};
 
-    </div>
-  )
-}
-
-export default AdvancedSearch
+export default AdvancedSearch;
