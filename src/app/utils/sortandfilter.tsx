@@ -15,20 +15,17 @@ export function sortandFilter(
   filterOptions: FilterOptions,
   sortOptions: sortOptions
 ): Pokemon[] {
-  // This function can be used to sort and filter Pokémon data
   let result = [...data];
 
-  // Type filtering
   if (filterOptions.type && filterOptions.type !== "all") {
     result = result.filter(
       (p) =>
         Array.isArray(p.types) &&
         p.types.some((t) => {
-          // If it's already a string
           if (typeof t === "string") {
             return t.toLowerCase() === filterOptions.type!.toLowerCase();
           }
-          // If it's an object with type.name
+
           if (
             typeof t === "object" &&
             t !== null &&
@@ -45,12 +42,11 @@ export function sortandFilter(
     );
   }
 
-  // Search filtering
   if (filterOptions.searchText) {
     const searchLower = filterOptions.searchText.toLowerCase();
     result = result.filter((p) => p.name.toLowerCase().includes(searchLower));
   }
-  // Sorting based on key and order
+
   if (sortOptions.key) {
     result.sort((a, b) => {
       if (sortOptions.key === "id") {

@@ -2,7 +2,6 @@ import React from "react";
 
 type Buttonprops = {
   text: string;
-  onClick?: {};
 };
 
 const Button = ({ text }: Buttonprops) => {

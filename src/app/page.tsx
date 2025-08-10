@@ -1,5 +1,5 @@
 "use client";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Button from "./components/Button";
@@ -34,7 +34,7 @@ export default function Home() {
   }, []);
 
   const fetchpokemon = async () => {
-    let max = 151;
+    const max = 151;
     const getRandomInt = (max: number) => Math.floor(Math.random() * max);
     const randomId = getRandomInt(max) + 1;
     const response = await fetch(
@@ -85,14 +85,14 @@ export default function Home() {
             className="px-4 py-2 bg-teal-500 text-white rounded-xl shadow active:scale-95 font-jaro"
             onClick={fetchpokemon}
           >
-            I'm Feeling Lucky
+            I&#39;m Feeling Lucky
           </button>
           <div
             className="
               pokemon-card
               p-2
               sm:p-5
-              w-full sm:w-auto
+              w-full sm:w-6xl
               overflow-x-hidden
             "
           >

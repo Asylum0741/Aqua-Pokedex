@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Button from "./Button";
 import Stats from "./Stats";
+import Image from "next/image";
 
 export interface PokemonType {
   id: number;
@@ -107,7 +107,7 @@ const PokemonPage = ({ pkmn }: PokemonPageProps) => {
 
   return (
     <div className="flex flex-col md:flex-row w-full gap-6">
-      {/* IMAGE + CRY BUTTON */}
+      {/* Left Section - Name, ID, Image, Cry Button */}
       <div className="md:w-[60%] flex flex-col items-center">
         {/* Name & ID */}
         <div className="flex justify-start items-center mx-1.5 flex-nowrap">
@@ -133,9 +133,11 @@ const PokemonPage = ({ pkmn }: PokemonPageProps) => {
 
         {/* Pokémon Image */}
         <div className="flex flex-col px-4 my-4 items-center">
-          <img
+          <Image
             src={pkmn.sprites.other["official-artwork"].front_default}
             alt={pkmn.name}
+            width={300}
+            height={300}
             className="max-w-full h-auto"
           />
           <div className="mt-4">
@@ -149,7 +151,7 @@ const PokemonPage = ({ pkmn }: PokemonPageProps) => {
         </div>
       </div>
 
-      {/* DESCRIPTION + DETAILS */}
+      {/* Right Section - Description, Details, Abilities, Types, Stats */}
       <div className="md:w-[40%] flex flex-col gap-4">
         {/* Description */}
         <div>
