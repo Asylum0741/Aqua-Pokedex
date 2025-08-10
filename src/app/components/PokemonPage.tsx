@@ -200,10 +200,12 @@ const PokemonPage = ({ pkmn }: PokemonPageProps) => {
           <hr />
           <div className="flex gap-5 my-2">
             {pkmn.types.map((t, index) => (
-              <img
+              <Image
                 key={index}
                 src={`/images/type/${t.type.name.toUpperCase()}.svg`}
                 alt={t.type.name}
+                width={70}
+                height={100}
               />
             ))}
           </div>

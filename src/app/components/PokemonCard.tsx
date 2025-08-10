@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 type PokemonCardProps = {
@@ -27,10 +28,11 @@ const PokemonCard = ({ id, name, types }: PokemonCardProps) => {
       </div>
 
       {/* Pokémon Image */}
-      <img
+      <Image
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
         alt={name}
         width={150}
+        height={150}
         className="sm:w-[250px] relative bottom-2 sm:bottom-4"
       />
 
@@ -64,11 +66,12 @@ const PokemonCard = ({ id, name, types }: PokemonCardProps) => {
           "
         >
           {types.map((type) => (
-            <img
+            <Image
               key={type}
               src={`/images/type/${type}.svg`}
               alt={type}
               width={30}
+              height={50}
               className="sm:w-[50px]"
             />
           ))}
