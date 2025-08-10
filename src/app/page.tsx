@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 export default function Home() {
   const [first12pokemons, setFirst12Pokemons] = useState<any[]>([]);
   const [pkmn, setpkmn] = useState<any | null>(null);
+
   useEffect(() => {
     fetchpokemon();
   }, []);
@@ -34,9 +35,7 @@ export default function Home() {
 
   const fetchpokemon = async () => {
     let max = 151;
-    const getRandomInt = (max: number) => {
-      return Math.floor(Math.random() * max);
-    };
+    const getRandomInt = (max: number) => Math.floor(Math.random() * max);
     const randomId = getRandomInt(max) + 1;
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${randomId}/`
@@ -44,22 +43,32 @@ export default function Home() {
     const pkmn = await response.json();
     setpkmn(pkmn);
   };
+
   return (
     <>
       <Navbar />
-      <div className="flex flex-col items-center gap-6">
+      <div className="flex flex-col items-center gap-6 sm:px-0 px-2">
         {/* SECTION 1 - First 12 Pokémon Grid */}
         <section className="w-full max-w-6xl">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div
+            className="
+              grid gap-4
+              grid-cols-2
+              sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+              sm:gap-4
+            "
+          >
             {first12pokemons.map((pokemon: any) => (
               <Link href={`/pokemon/${pokemon.id}`} key={pokemon.id}>
-                <PokemonCard
-                  id={pokemon.id}
-                  name={pokemon.name}
-                  types={pokemon.types.map((t: { type: { name: string } }) =>
-                    t.type.name.toLowerCase()
-                  )} //Never I am gonna use Typescript again
-                />
+                <div className="w-full sm:w-auto">
+                  <PokemonCard
+                    id={pokemon.id}
+                    name={pokemon.name}
+                    types={pokemon.types.map((t: { type: { name: string } }) =>
+                      t.type.name.toLowerCase()
+                    )}
+                  />
+                </div>
               </Link>
             ))}
           </div>
@@ -71,14 +80,22 @@ export default function Home() {
         </section>
 
         {/* SECTION 2 - Random Pokémon */}
-        <section className="w-full max-w-3xl flex flex-col items-center gap-4">
+        <section className="w-full sm:max-w-3xl flex flex-col items-center gap-4">
           <button
             className="px-4 py-2 bg-teal-500 text-white rounded-xl shadow active:scale-95 font-jaro"
             onClick={fetchpokemon}
           >
             I'm Feeling Lucky
           </button>
-          <div className="pokemon-card p-5">
+          <div
+            className="
+              pokemon-card
+              p-2
+              sm:p-5
+              w-full sm:w-auto
+              overflow-x-hidden
+            "
+          >
             <PokemonPage pkmn={pkmn} />
           </div>
         </section>

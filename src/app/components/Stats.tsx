@@ -54,32 +54,35 @@ const Stats: React.FC<StatsProps> = ({ pokemonId }) => {
 
   if (loading) {
     return (
-      <div className="bg-[#333] text-white rounded-2xl w-[30rem] p-5 font-jaro flex justify-center items-center">
+      <div className="bg-[#333] text-white rounded-2xl w-[30rem] max-w-full p-5 font-jaro flex justify-center items-center text-base sm:text-lg">
         Loading stats...
       </div>
     );
   }
 
   return (
-    <div className="bg-[#333] text-white rounded-2xl w-[30rem] p-5 font-jaro flex flex-col justify-center items-center">
-      <div className="text-2xl mb-4">STATS</div>
-      <div className="flex gap-10">
-        <table className="text-xl">
+    <div className="bg-[#333] text-white rounded-2xl w-[30rem] max-w-full p-5 font-jaro flex flex-col justify-center items-center">
+      <div className="text-lg sm:text-2xl mb-4">STATS</div>
+      <div className="flex gap-4 sm:gap-10 w-full overflow-x-auto">
+        <table className="text-sm sm:text-xl w-full">
           <tbody>
             {stats.map((stat, idx) => (
               <tr key={stat.name}>
-                <td className="px-2 text-right">{stat.name}</td>
-                <td className="px-2 py-4">
-                  <div className="rounded h-2 w-[200px] bg-gray-600">
+                <td className="px-1 sm:px-2 text-right">{stat.name}</td>
+                <td className="px-1 sm:px-2 py-2 sm:py-4">
+                  <div className="rounded h-2 w-[120px] sm:w-[200px] bg-gray-600">
                     <div
                       className="rounded h-2 bg-white transition-all duration-500"
                       style={{
-                        width: `${animatedWidths[idx]}px`,
+                        width: `${
+                          animatedWidths[idx] *
+                          (window.innerWidth < 640 ? 0.6 : 1)
+                        }px`,
                       }}
                     ></div>
                   </div>
                 </td>
-                <td className="px-5">{stat.value}</td>
+                <td className="px-2 sm:px-5">{stat.value}</td>
               </tr>
             ))}
           </tbody>

@@ -110,16 +110,22 @@ const PokemonPage = ({ pkmn }: PokemonPageProps) => {
       {/* IMAGE + CRY BUTTON */}
       <div className="md:w-[60%] flex flex-col items-center">
         {/* Name & ID */}
-        <div className="flex justify-start items-center gap-2 mx-1.5 flex-nowrap">
+        <div className="flex justify-start items-center mx-1.5 flex-nowrap">
           <div
-            className="p-2 sm:p-3 text-2xl sm:text-5xl text-white font-jaro px-4 sm:px-6 clip-path1"
-            style={{ backgroundColor: bgColor }}
+            className="p-2 sm:p-3 text-2xl sm:text-5xl text-white font-jaro px-4 sm:px-6 "
+            style={{
+              backgroundColor: bgColor,
+              clipPath: "polygon(0 0, 100% 0, 89% 100%, 0% 100%)",
+            }}
           >
             #{String(pkmn.id).padStart(4, "0")}
           </div>
           <div
-            className="p-2 sm:p-3 text-2xl sm:text-5xl text-white font-jaro px-6 sm:px-10 clip-path2"
-            style={{ backgroundColor: bgColor }}
+            className="p-2 sm:p-3 text-2xl sm:text-5xl text-white font-jaro px-6 sm:px-10"
+            style={{
+              backgroundColor: bgColor,
+              clipPath: "polygon(8% 0, 100% 0, 100% 100%, 0% 100%)",
+            }}
           >
             {pkmn.name.charAt(0).toUpperCase() + pkmn.name.slice(1)}
           </div>

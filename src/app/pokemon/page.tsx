@@ -61,16 +61,14 @@ export default function Pokemon() {
       <Navbar />
       <div className="flex justify-center items-center flex-col gap-2">
         <div>
-          <h1 className="text-6xl mb-4 text-center font-jaro text-teal-700">
+          <h1 className="text-6xl mb-4 mt-10 text-center font-jaro text-teal-700">
             Pokémon List
           </h1>
 
-          <div className="flex justify-center items-center flex-col sm:flex-row gap-4 my-4"></div>
-
-          <div className="flex gap-4 mb-4">
+          <div className="flex gap-4 mb-4 justify-center items-center flex-col sm:flex-row">
             {/* Search Bar */}
 
-            <div className="flex flex-col">
+            <div className="flex flex-col justify-center items-center gap-2">
               <div className="flex justify-center items-center flex-col gap-7 py-5">
                 <div className="font-jaro text-2xl sm:text-4xl ">
                   Search Pokemon
@@ -100,8 +98,8 @@ export default function Pokemon() {
               </div>
 
               {/* Sorting Code */}
-              <div className="flex justify-center items-center gap-4">
-                <div className="flex justify-center items-center gap-4">
+              <div className="flex justify-center items-center gap-4 flex-col sm:flex-row">
+                <div className="flex justify-center items-center gap-4 w-full">
                   <select
                     className="sm:w-[30vw] h-12 borderteal text-teal-700 text-center appearance-none"
                     name="sort"
@@ -175,20 +173,31 @@ export default function Pokemon() {
 
           {/* Pokemon Cards display */}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {filteredPokemons.map((pokemon) => {
-              return (
-                <Link href={`/pokemon/${pokemon.id}`}>
-                  <PokemonCard
-                    id={pokemon.id}
-                    name={pokemon.name}
-                    types={pokemon.types.map((type) => type.toLowerCase())}
-                    key={pokemon.id}
-                  />
-                </Link>
-              );
-            })}
-          </div>
+          {/* Pokemon Cards display */}
+          {filteredPokemons.length > 0 ? (
+            <div
+              className="grid gap-4
+      grid-cols-2
+      sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+      sm:gap-4"
+            >
+              {filteredPokemons.map((pokemon) => {
+                return (
+                  <Link href={`/pokemon/${pokemon.id}`} key={pokemon.id}>
+                    <PokemonCard
+                      id={pokemon.id}
+                      name={pokemon.name}
+                      types={pokemon.types.map((type) => type.toLowerCase())}
+                    />
+                  </Link>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="text-center font-jaro text-2xl text-teal-700 mt-10">
+              No Pokémon match your search or filter criteria.
+            </div>
+          )}
         </div>
         <Footer />
       </div>
