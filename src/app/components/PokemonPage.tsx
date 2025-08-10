@@ -202,7 +202,7 @@ const PokemonPage = ({ pkmn }: PokemonPageProps) => {
             {pkmn.types.map((t, index) => (
               <Image
                 key={index}
-                src={`/images/type/${t.type.name.toUpperCase()}.svg`}
+                src={`/images/type/${t.type.name}.svg`}
                 alt={t.type.name}
                 width={70}
                 height={100}
